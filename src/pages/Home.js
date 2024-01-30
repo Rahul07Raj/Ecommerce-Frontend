@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import {FaSearch} from 'react-icons/fa'
+
 
 const Home = () => {
   return (
-    <div>
-      <h1>hii</h1>
-    </div>
+<div>Home</div>
   )
 }
 
