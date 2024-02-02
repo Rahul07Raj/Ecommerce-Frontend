@@ -166,7 +166,6 @@ const MenuLinks = ({isOpen }) => {
         <MenuItem to="/">Home</MenuItem>
         <MenuItem to="/cart">  <FaShoppingBag /> </MenuItem>
         <MenuItem to="/search">  <FaSearch /> </MenuItem>
-        <MenuItem to="/pricing">Pricing </MenuItem>
 
         {user?._id ? (
         <>
@@ -175,12 +174,10 @@ const MenuLinks = ({isOpen }) => {
            >
             <FaUser />
           </button>
-          <dialog open={isopen}>
-            <div>
+          {/* <dialog open={isopen}> */}
+            {/* <div> */}
               {user.role === "admin" && (
-                <Link  to="/admin/dashboard">
-                  Admin
-                </Link>
+        <MenuItem to="/admin/dashboard">Admin </MenuItem>
               )}
 
               <Link to="/orders">
@@ -189,8 +186,8 @@ const MenuLinks = ({isOpen }) => {
               <button >
                 <FaSignOutAlt />
               </button>
-            </div>
-          </dialog>
+            {/* </div> */}
+          {/* </dialog> */}
         </>
       ) : (
         <Link to={"/login"}>
