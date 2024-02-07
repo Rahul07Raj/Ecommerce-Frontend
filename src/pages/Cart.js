@@ -32,54 +32,17 @@ const cartItems =[
   },
 ]
 const Cart = () => {
-  // useSelector((e) => state.cartReducer);
-  // const dispatch = useDispatch();
+
 
   const [couponCode, setCouponCode] = useState("");
   const [isValidCouponCode, setIsValidCouponCode] = useState(false);
 
   const incrementHandler = () => {
-    // if (cartItem.quantity >= cartItem.stock) return;
-    // dispatch(addToCart({ ...cartItem, quantity: cartItem.quantity + 1 }));
   };
   const decrementHandler = () => {
-    // if (cartItem.quantity <= 1) return;
-    // dispatch(addToCart({ ...cartItem, quantity: cartItem.quantity - 1 }));
   };
   const removeHandler = (productId) => {
-    // dispatch(removeCartItem(productId));
   };
-
-  // useEffect(() => {
-  // const { token: cancelToken, cancel } = axios.CancelToken.source();
-
-  // const timeOutID = setTimeout(() => {
-  //   axios
-  //     .get(`${server}/api/v1/payment/discount?coupon=${couponCode}`, {
-  //       cancelToken,
-  //     })
-  //     .then((res) => {
-  //       // dispatch(discountApplied(res.data.discount));
-  //       setIsValidCouponCode(true);
-  //       // dispatch(calculatePrice());
-  //     })
-  //     .catch(() => {
-  //       dispatch(discountApplied(0));
-  //       setIsValidCouponCode(false);
-  //       dispatch(calculatePrice());
-  //     });
-  // }, 1000);
-
-  //   return () => {
-  //     clearTimeout(timeOutID);
-  //     cancel();
-  //     setIsValidCouponCode(false);
-  //   };
-  // }, [couponCode, dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(calculatePrice());
-  // }, [cartItems, dispatch]);
 
   return (
     <Box
