@@ -86,10 +86,11 @@ const Cart = () => {
       className="cart"
       display="flex"
       flexDirection={{ base: "column", md: "row" }}
+      p={[2, 4, 6, 8]}
     >
-      <main flex="1">
-        {/* {cartItems.length > 0 ? ( */}
-      {
+      <Box flex="2">
+        {cartItems.length > 0 ? (
+    
           cartItems.map((cartItem, idx) => (
             <CartItemCard
               key={idx}
@@ -102,24 +103,25 @@ const Cart = () => {
               price={cartItem.price}
             />
           ))
+        ) : (
+          <Text fontSize="xl" fontWeight="bold" textAlign="center">
+            No Items Added
+          </Text>
+        )
         }
-        {/* ) : ( */}
-          {/* <Text fontSize="xl" fontWeight="bold" textAlign="center"> */}
-            {/* No Items Added */}
-          {/* </Text> */}
-      </main>
-      <aside flex="1">
-        <Text fontSize="xl">Subtotal: ₹{}</Text>
-        <Text fontSize="xl">Shipping Charges: ₹{}</Text>
-        <Text fontSize="xl">Tax: ₹{}</Text>
+      </Box>
+      <Box flex="1" ml={["1rem","4rem","0.3rem","1rem"]} p={["0.5rem","4rem","4rem","8rem"]} >
+        <Text fontSize="xl">Subtotal: ₹4000</Text>
+        <Text fontSize="xl">Shipping Charges: ₹40</Text>
+        <Text fontSize="xl">Tax: ₹10</Text>
         <Text fontSize="xl">
-          Discount:{" "}
+          Discount:5
           <Text as="em" color="red">
-            - ₹{}
+            - ₹1000
           </Text>
         </Text>
         <Text fontSize="2xl" fontWeight="bold">
-          Total: ₹{}
+          Total: ₹54000
         </Text>
 
         <Input
@@ -148,7 +150,7 @@ const Cart = () => {
             </Button>
           </Link>
         {/* )} */}
-      </aside>
+      </Box>
     </Box>
   );
 };

@@ -51,7 +51,7 @@ const CartItemCard = ({
         <Button variant="outline" onClick={() => decrementHandler()}>
           -
         </Button>
-        <Text mx="2">{quantity}</Text>
+        <Text mx="2">{5}</Text>
         <Button variant="outline" onClick={() => incrementHandler()}>
           +
         </Button>
