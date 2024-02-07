@@ -31,47 +31,6 @@ const Shipping = () => {
     pinCode: "",
   });
 
-  //   const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-  //     setShippingInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  //   };
-
-  //   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-  //     e.preventDefault();
-
-  //     dispatch(saveShippingInfo(shippingInfo));
-
-  //     try {
-  //       const { data } = await axios.post(
-  //         `${server}/api/v1/payment/create`,
-  //         {
-  //           amount: total,
-  //         },
-  //         {
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //         }
-  //       );
-
-  //       navigate("/pay", {
-  //         state: data.clientSecret,
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //       toast({
-  //         title: "Error",
-  //         description: "Something went wrong",
-  //         status: "error",
-  //         duration: 3000,
-  //         isClosable: true,
-  //       });
-  //     }
-  //   };
-
-//   useEffect(() => {
-//     if (cartItems.length <= 0) return navigate("/cart");
-//   }, [cartItems]);
-
   return (
     <Flex direction="column" align="center" justify="center" p={4}>
       <IconButton
