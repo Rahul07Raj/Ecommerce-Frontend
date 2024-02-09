@@ -4,7 +4,7 @@ import { AiOutlineEye } from 'react-icons/ai';
 import { Box, Table, Thead, Tbody, Tr, Th, Td, IconButton, Text, HStack, Button } from '@chakra-ui/react';
 
 const Orders = () => {
-  const arr = [1555555555555555555, 2, 3, 4, 5, 6, 7, 8, 9];
+  const arr = [1555555555555555555, 2, 3, 4, 5, 6, 7, 8, 9,10];
 
   // Pagination logic
   const pageSize = 10; // Number of items per page
