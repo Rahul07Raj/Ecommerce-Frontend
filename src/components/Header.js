@@ -97,20 +97,13 @@ const MenuLinks = ({isOpen }) => {
            >
             <FaUser />
           </button>
-          {/* <dialog open={isopen}> */}
-            {/* <div> */}
               {user.role === "admin" && (
         <MenuItem to="/admin/dashboard">Admin </MenuItem>
               )}
-
-              <Link to="/orders">
-                Orders
-              </Link>
+              <MenuItem to="/orders">Orders </MenuItem>
               <button >
                 <FaSignOutAlt />
               </button>
-            {/* </div> */}
-          {/* </dialog> */}
         </>
       ) : (
         <Link to={"/login"}>
