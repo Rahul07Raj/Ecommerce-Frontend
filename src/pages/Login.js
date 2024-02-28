@@ -44,9 +44,16 @@ const Login = () => {
             />
           </FormControl>
         </VStack>
-
+        <Button
+            size="md"
+            rounded="md"
+            mt={3}
+            p={3}
+            w={"10rem"}
+          >
+            Login
+          </Button>
         <Box textAlign="center" mt={4}>
-          <p>Already Signed In Once</p>
           <Button
             leftIcon={<FcGoogle />}
             colorScheme="blue"

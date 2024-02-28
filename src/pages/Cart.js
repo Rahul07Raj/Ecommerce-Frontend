@@ -12,7 +12,6 @@ import CartItemCard from "../components/CartItemCard";
 //   removeCartItem,
 // } from "../redux/reducer/cartReducer";
 // import { RootState, server } from "../redux/store";
-import { CartItem } from "../types/types";
 const cartItems =[
   {
     productId:"askjfdadsjk",

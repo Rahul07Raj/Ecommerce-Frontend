@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import { Flex, Image, Text, Button } from "@chakra-ui/react";
-import { CartItem as CartItemType } from "../types/types";
-
 // type CartItemProps = {
 //   cartItem: CartItemType;
 //   incrementHandler: (cartItem: CartItemType) => void;

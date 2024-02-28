@@ -8,9 +8,7 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
-// import Logo from "./Logo";
-
-const user = {_id:"kasdfjkals",role:"admin"}
+const user = {_id:"kasdfjkals",role:""}
 
 
 const Header = (props) => {
