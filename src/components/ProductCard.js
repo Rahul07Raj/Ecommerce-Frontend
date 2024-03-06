@@ -3,7 +3,7 @@ import { Card,CardBody,Image,Heading,Divider,CardFooter,ButtonGroup, Text, Butto
 
 const ProductCard = ({productId,price,name,photo,stock,handler}) => {
   return (
-    <Card maxWidth={"20rem"} width={'100%'}>
+    <Card maxWidth={"19rem"} width={'100%'}>
     <CardBody >
       <Image
         // src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
@@ -12,10 +12,10 @@ const ProductCard = ({productId,price,name,photo,stock,handler}) => {
         alt = {name}
         borderRadius='lg'
         width='100%' // Set width to 100% to ensure the image fills its container
-          height='11rem' // Set a fixed height for uniformity, adjust as needed
+          height='9rem' // Set a fixed height for uniformity, adjust as needed
           objectFit='cover'
       />
-      <Stack mt='6' spacing='3'>
+      <Stack mt='4' spacing='2'>
         <Heading size='md'>{name}</Heading>
         <Text>
           This sofa is perfect for modern tropical spaces, baroque inspired
