@@ -27,10 +27,10 @@ const Home = () => {
 {
 product.map((data)=>(
   
-  <Link to={`/product/${data._id}`}>
 
 <ProductCard
 key={data._id}
+id={data._id}
  name={data.name}
  price ={data.price}
 //  photo="https://m.media-amazon.com/images/I/51ltGkq0m5L._SX679_.jpg"
@@ -39,7 +39,6 @@ photo={`http://localhost:4000/${data.photo}`}
 
 onClick={() => {console.log("clinkk")}} 
 />
-  </Link>
 ))
 }
 </div>

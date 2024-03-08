@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
+import { Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 import {
   FaSearch,
   FaShoppingBag,
@@ -7,6 +8,8 @@ import {
   FaUser,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { useCart } from './CartContext';
+
 
 const user = {_id:"kasdfjkals",role:""}
 
@@ -61,7 +64,7 @@ const MenuToggle = ({ toggle, isOpen }) => {
 
 const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   return (
-    <Link href={to}>
+    <Link to={to}>
       <Text display="block" {...rest}>
         {children}
       </Text>
@@ -71,6 +74,7 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 
 const MenuLinks = ({isOpen }) => {
     const [isopen, setIsopen] = useState(false);
+    const { cartItems } = useCart();
 
   return (
     <Box
@@ -85,7 +89,10 @@ const MenuLinks = ({isOpen }) => {
         pt={[4, 4, 0, 0]}
       >
         <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/cart">  <FaShoppingBag /> </MenuItem>
+        <MenuItem to="/cart">   <FaShoppingBag />
+        {cartItems.length > 0 && (
+          <span>{cartItems.length}</span>
+        )} </MenuItem>
         <MenuItem to="/search">  <FaSearch /> </MenuItem>
 
         {user?._id ? (

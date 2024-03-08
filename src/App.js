@@ -4,6 +4,8 @@ import Loader from './components/Loader';
 import Header from './components/Header';
 import Login from './pages/Login';
 import ProductDetails from './components/ProductDetails';
+import { CartProvider } from '../src/components/CartContext';
+
 // import './styles/app.scss'
 
 const Home =  lazy(()=>import("./pages/Home"));
@@ -15,6 +17,8 @@ const Orders =  lazy(()=>import("./pages/Orders"));
 const App = () => {
   return (
    < Router>
+   <CartProvider>
+
    <Header/>
 <Suspense fallback={<Loader/>}>
    <Routes>
@@ -33,6 +37,7 @@ const App = () => {
 
    </Routes>
 </Suspense>
+      </CartProvider>
 
    </Router>
   )
