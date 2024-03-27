@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Login from './pages/Login';
 import ProductDetails from './components/ProductDetails';
 import { CartProvider } from '../src/components/CartContext';
+import Signup from './pages/Signup';
 
 // import './styles/app.scss'
 
@@ -26,6 +27,7 @@ const App = () => {
     <Route path="/search" element={<Search/>}/>
     <Route path="/cart" element={<Cart/>}/>
     <Route path="/login" element={<Login/>}/>
+    <Route path="/signup" element={<Signup/>}/>
     <Route path="/product/:id" element={<ProductDetails/>}/>
     
 
