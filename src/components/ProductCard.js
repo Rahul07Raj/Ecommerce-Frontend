@@ -1,14 +1,16 @@
 import React from 'react'
 import { Card,CardBody,Image,Heading,Divider,CardFooter,ButtonGroup, Text, Button, Stack } from "@chakra-ui/react";
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { useCart } from './CartContext';
 
 
 const ProductCard = ({id,price,name,photo,stock,handler}) => {
-
+  const navigate = useNavigate();
+const isLoggedIN = localStorage.getItem("token");
   const { addToCart } = useCart();
   const handleAddToCart = () => {
-    addToCart({ id, price, name, photo, stock });
+    isLoggedIN?
+    addToCart({ id, price, name, photo, stock }):navigate("/login")
   };
 
   return (
@@ -43,8 +45,7 @@ const ProductCard = ({id,price,name,photo,stock,handler}) => {
         <Button variant='solid' colorScheme='blue'>
           Buy now
         </Button>
-        <Button variant='ghost' colorScheme='blue'  onClick={handleAddToCart}
->
+        <Button variant='ghost' colorScheme='blue'  onClick={handleAddToCart}>
           Add to cart
         </Button>
       </ButtonGroup>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Flex, Text, Button, Stack } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaSearch,
   FaShoppingBag,
@@ -8,15 +8,13 @@ import {
   FaUser,
   FaSignOutAlt,
 } from "react-icons/fa";
-import { useCart } from './CartContext';
+import { useCart } from "./CartContext";
 
-
-const user = {_id:"kasdfjkals",role:""}
-
+const user = { _id: "kasdfjkals", role: "" };
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-//   const [isOpen, setIsOpen] = useState(false);
+  //   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -72,9 +70,16 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   );
 };
 
-const MenuLinks = ({isOpen }) => {
-    const [isopen, setIsopen] = useState(false);
-    const { cartItems } = useCart();
+const MenuLinks = ({ isOpen }) => {
+  const [isopen, setIsopen] = useState(false);
+  const { cartItems } = useCart();
+  const isLoggedIN = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+      navigate("/login");
+  };
 
   return (
     <Box
@@ -89,59 +94,89 @@ const MenuLinks = ({isOpen }) => {
         pt={[4, 4, 0, 0]}
       >
         <MenuItem to="/">Home</MenuItem>
-        <MenuItem to="/cart">   <FaShoppingBag />
-        {cartItems.length > 0 && (
-          <span>{cartItems.length}</span>
-        )} </MenuItem>
-        <MenuItem to="/search">  <FaSearch /> </MenuItem>
+
+        <MenuItem
+          // onClick={() => {
+          //   if(!isLoggedIN  ){navigate("/login") }else{ navigate("/cart")};
+          // }}
+          to={!isLoggedIN?"/login":"/cart"}
+        >
+          <FaShoppingBag />
+          {cartItems.length > 0 && <span>{cartItems.length}</span>}{" "}
+        </MenuItem>
+
+        <MenuItem to="/search">
+          {" "}
+          <FaSearch />{" "}
+        </MenuItem>
 
         {user?._id ? (
-        <>
-          <button
-           onClick={() => setIsopen((prev) => !prev)}
-           >
-            <FaUser />
-          </button>
-              {user.role === "admin" && (
-        <MenuItem to="/admin/dashboard">Admin </MenuItem>
-              )}
-              <MenuItem to="/orders">Orders </MenuItem>
-              <button >
-                <FaSignOutAlt />
-              </button>
-        </>
-      ) : (
-        <Link to={"/login"}>
-          <FaSignInAlt />
-        </Link>
-      )}
-        
-        <MenuItem to="/login" isLast>
-          <Button
-            size="sm"
-            rounded="md"
-            color={["primary.500", "primary.500", "white", "white"]}
-            bg={["white", "white", "primary.500", "primary.500"]}
-            _hover={{
-              bg: ["primary.100", "primary.100", "primary.600", "primary.600"]
-            }}
-          >
-            Log In
-          </Button>
-        </MenuItem>
-        <MenuItem to="/signup" isLast>
-          <Button
-            size="sm"
-            rounded="md"
-            color={["primary.500", "primary.500", "white", "white"]}
-            bg={["white", "white", "primary.500", "primary.500"]}
-            _hover={{
-              bg: ["primary.100", "primary.100", "primary.600", "primary.600"]
-            }}
-          >
-            Sign Up
-          </Button>
-        </MenuItem>
+          <>
+          {isLoggedIN?
+            <button onClick={() => setIsopen((prev) => !prev)}>
+              <FaUser />
+            </button>:""
+          }
+            {user.role === "admin" && (
+              <MenuItem to="/admin/dashboard">Admin </MenuItem>
+            )}
+            {isLoggedIN ? <MenuItem to="/orders">Orders </MenuItem> : ""}
+            {
+            isLoggedIN?
+            <button>
+              <FaSignOutAlt onClick={handleLogout} />
+            </button>:""
+            }
+          </>
+        ) : (
+          <Link to={"/login"}>
+            <FaSignInAlt />
+          </Link>
+        )}
+        {!isLoggedIN ? (
+          <MenuItem to="/login" isLast>
+            <Button
+              size="sm"
+              rounded="md"
+              color={["primary.500", "primary.500", "white", "white"]}
+              bg={["white", "white", "primary.500", "primary.500"]}
+              _hover={{
+                bg: [
+                  "primary.100",
+                  "primary.100",
+                  "primary.600",
+                  "primary.600",
+                ],
+              }}
+            >
+              Log In
+            </Button>
+          </MenuItem>
+        ) : (
+          ""
+        )}
+        {!isLoggedIN ? (
+          <MenuItem to="/signup" isLast>
+            <Button
+              size="sm"
+              rounded="md"
+              color={["primary.500", "primary.500", "white", "white"]}
+              bg={["white", "white", "primary.500", "primary.500"]}
+              _hover={{
+                bg: [
+                  "primary.100",
+                  "primary.100",
+                  "primary.600",
+                  "primary.600",
+                ],
+              }}
+            >
+              Sign Up
+            </Button>
+          </MenuItem>
+        ) : (
+          ""
+        )}
       </Stack>
     </Box>
   );

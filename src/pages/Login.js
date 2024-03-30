@@ -12,14 +12,43 @@ import {
 } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import api from "../api/api";
 
 const Login = () => {
-  const [number, setNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
-  console.log(number)
+  console.log(email)
   console.log(password)
+
+  const handleLogin = async ()=>{
+    try{
+      const body = {email,password};
+     const res = await api.post("/user/login",body);
+     console.log(res);
+     if(res.status===200){
+      localStorage.setItem("token", JSON.stringify(res.data.token));
+      toast({
+        title: "Success",
+        description: res.data.message,
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+      navigate("/");
+     }
+    }catch(error){
+        // console.log(error)
+        toast({
+          title: error.response.data.message,
+          description: error.response.data.error,
+          status: "warning",
+          duration: 5000,
+          isClosable: true,
+        });
+    }
+  }
 
   return (
     <Center>
@@ -42,11 +71,11 @@ const Login = () => {
 
           <VStack spacing={4} align="stretch">
             <FormControl isRequired>
-              <FormLabel>Mobile Number</FormLabel>
+              <FormLabel>Email</FormLabel>
               <Input
-                type="number"
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
             <FormControl isRequired>
@@ -63,14 +92,15 @@ const Login = () => {
             mt={3}
             p={3}
             w={"10rem"}
-            onClick={() => {
-            (number && password) ?navigate("/"):toast({
-                title: "please enter no or password",
-                status: "error",
-                isClosable: true,
-              })
+            // onClick={() => {
+            // // (email && password) ?navigate("/"):toast({
+            // //     title: "please enter no or password",
+            // //     status: "error",
+            // //     isClosable: true,
+            // //   })
               
-            }}
+            // }}
+            onClick={handleLogin}
             size="lg"
                 bg={'blue.400'}
                 color={'white'}

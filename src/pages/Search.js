@@ -178,15 +178,14 @@ const Search = () => {
             >
               {allProducts &&
                 allProducts.map((data) => (
-                  <Link to={`/product/${data._id}`}>
                   <ProductCard
                     //  display: 'flex', flexWrap: 'wrap',gap: '20px',justifyContent:"center",alignContent:"center"
                     key={data._id}
+                    id={data._id}
                     name={data.name}
                     price={data.price}
                     photo={`http://localhost:4000/${data.photo}`}
                   />
-                    </Link>
                 ))}
             </Box>
 

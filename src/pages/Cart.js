@@ -1,17 +1,9 @@
-// import axios from "axios";
 import { useEffect, useState } from "react";
 import { VscError } from "react-icons/vsc";
-// import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import CartItemCard from "../components/CartItemCard";
-// import {
-//   addToCart,
-//   calculatePrice,
-//   discountApplied,
-//   removeCartItem,
-// } from "../redux/reducer/cartReducer";
-// import { RootState, server } from "../redux/store";
+
 const cartItems =[
   {
     productId:"askjfdadsjk",

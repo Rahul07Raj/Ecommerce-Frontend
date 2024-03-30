@@ -16,6 +16,8 @@ const Shipping =  lazy(()=>import("./pages/Shipping"));
 const Orders =  lazy(()=>import("./pages/Orders"));
 
 const App = () => {
+   const isLoggedIN = localStorage.getItem("token");
+  console.log(isLoggedIN);
   return (
    < Router>
    <CartProvider>
@@ -30,7 +32,6 @@ const App = () => {
     <Route path="/signup" element={<Signup/>}/>
     <Route path="/product/:id" element={<ProductDetails/>}/>
     
-
     <Route>
     <Route path="/shipping" element={<Shipping/>}/>
     <Route path="/orders" element={<Orders/>}/>
